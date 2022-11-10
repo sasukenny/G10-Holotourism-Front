@@ -1,4 +1,4 @@
-package com.holotourism.holotourism_front
+package com.holotourismfront.holotourismfront
 
 import io.flutter.embedding.android.FlutterActivity
 

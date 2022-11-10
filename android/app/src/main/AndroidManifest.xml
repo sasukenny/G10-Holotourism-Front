@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.holotourism.holotourism_front">
+    package="com.holotourismfront.holotourismfront">
    <application
-        android:label="holotourism_front"
+        android:label="holotourismfront"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
