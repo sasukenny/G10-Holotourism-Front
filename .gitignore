@@ -45,3 +45,7 @@ app.*.map.json
 
 #github
 .github/workflows
+
+#sonar
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt
