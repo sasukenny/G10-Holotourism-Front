@@ -2,11 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled1/blocs/lugarbloc/lugarbloc_bloc.dart';
-import 'package:untitled1/presentation/home.dart';
-import 'package:untitled1/presentation/screens/home_screen.dart';
 
 import '../widgets/home_list.dart';
+import 'home.dart';
 
 const topColor = Color(0xFF00ac83);
 
