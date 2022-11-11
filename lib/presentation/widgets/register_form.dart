@@ -1,9 +1,9 @@
-// import '../.3/presentation/pages/login_page.dart';
 import '../../presentation/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import '../../resources/Registro.dart';
+import '../pages/login_page.dart';
 import 'input_text.dart';
-// import 'login_form.dart';
+import 'login_form.dart';
 
 class RegisterForm extends StatefulWidget {
   @override
@@ -157,10 +157,10 @@ class _RegisterFormState extends State<RegisterForm> {
                     onPressed: () {
                       registro.registrar(
                           _nombre, _apellido, _phone, _email, _password);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => LoginPage()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 15),
@@ -191,10 +191,10 @@ class _RegisterFormState extends State<RegisterForm> {
                       ),
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => LoginPage()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
                     },
                   ),
                 ],

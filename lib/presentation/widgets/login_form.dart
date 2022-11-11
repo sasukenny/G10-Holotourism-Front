@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
-import '../../presentation/initialhome.dart';
+import '../pages/initialhome.dart';
 import '../../presentation/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import '../../blocs/lugarbloc/lugarbloc_bloc.dart';
@@ -171,8 +171,6 @@ class _LoginFormState extends State<LoginForm>{
               _alertaText = 'Usuario o contraseña incorrecto';
             });
           }
-        } else {
-
         }
       },
     );

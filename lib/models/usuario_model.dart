@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
-// import 'package:image_picker/image_picker.dart';
-// import '../../models/lugar_model.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../models/lugar_model.dart';
 
 class UsuarioModel extends Equatable{
   final bool ok;

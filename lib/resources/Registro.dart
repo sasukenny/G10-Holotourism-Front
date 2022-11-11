@@ -36,6 +36,26 @@ class Registro {
     }
   }
 
+  Future<String> ingresar(String email, String password) async {
+
+    var response = await http.post(
+      Uri.parse('https://holotourism.herokuapp.com/api/auth/'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+    if (response.statusCode == 400){
+      return 'a';
+    } else {
+      UsuarioModel usr = UsuarioModel.fromJson(jsonDecode(response.body));
+      return usr.gToken;
+    }
+  }
+
 }
 
 

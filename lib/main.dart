@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../presentation/pages/welcome.dart';
 // import '../../presentation/ubicacion.dart';
-// import '../../presentation/pages/login_page.dart';
+import '../../presentation/pages/login_page.dart';
 import '../../presentation/pages/register_page.dart';
 
 import 'blocs/lugarbloc/lugarbloc_bloc.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         home: welcome(),
         routes: {
           RegisterPage.routeName: (_) => RegisterPage(),
-          // LoginPage.routeName: (_) => LoginPage(),
+          LoginPage.routeName: (_) => LoginPage(),
         },
       ),
     );

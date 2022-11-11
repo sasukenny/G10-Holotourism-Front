@@ -6,7 +6,7 @@ import 'package:untitled1/blocs/lugarbloc/lugarbloc_bloc.dart';
 import 'package:untitled1/presentation/home.dart';
 import 'package:untitled1/presentation/screens/home_screen.dart';
 
-import '../presentation/widgets/home_list.dart';
+import '../widgets/home_list.dart';
 
 const topColor = Color(0xFF00ac83);
 
