@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled1/blocs/lugarbloc/lugarbloc_bloc.dart';
-import 'package:untitled1/presentation/home.dart';
-import 'package:untitled1/presentation/screens/home_screen.dart';
+import '../../blocs/lugarbloc/lugarbloc_bloc.dart';
+import '../../presentation/pages/home.dart';
+import '../../presentation/screens/home_screen.dart';
 
 import '../presentation/widgets/home_list.dart';
 
