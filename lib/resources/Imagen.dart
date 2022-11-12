@@ -15,7 +15,7 @@ import 'dart:io';
 class Imagen {
   Future<String> subir(String field, String filePath) async {
     var request = http.MultipartRequest("POST",
-        Uri.parse('http://40.112.63.111:8081/api/images/saveimg/'));
+        Uri.parse('http://192.168.1.2:8081/api/images/saveimg/'));
     request.fields["file"] = field;
     request.files.add(await http.MultipartFile.fromPath("file", filePath));
     request.headers.addAll({"Content-type": "multipart/form-data"});
@@ -33,7 +33,7 @@ class Imagen {
 
   Future<LugarModel> detectar(String fileName) async {
     var response = await http.post(
-      Uri.parse('http://40.112.63.111:8081/api/detector/'),
+      Uri.parse('http://192.168.1.2:8081/api/detector/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -41,7 +41,8 @@ class Imagen {
         'fileName': fileName,
       }),
     );
-    String c = await Imagen.getDescriptions(jsonDecode(response.body));
+    // String c = await Imagen.getDescriptions(jsonDecode(response.body));
+    String c = 'Descripcion de prueba';
     print("Descpcion del sistema" + c);
     if (response.statusCode == 200) {
       LugarModel lugar = LugarModel.fromJson(jsonDecode(response.body));
@@ -57,7 +58,7 @@ class Imagen {
     List<ResLugarModel> resModel;
     List<LugarTuristicoModel> model = <LugarTuristicoModel>[];
     var response = await http.get(
-      Uri.parse('http://40.112.63.111:8081/api/images/showimages/'),
+      Uri.parse('http://192.168.1.2:8081/api/images/showimages/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -100,7 +101,7 @@ class Imagen {
 
   Future<String> guardarDB(LugarModel lugar, String xtoken, String nombre) async {
     var response = await http.post(
-      Uri.parse('http://40.112.63.111:8081/api/images/savedbimg/'),
+      Uri.parse('http://192.168.1.2:8081/api/images/savedbimg/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -124,7 +125,7 @@ class Imagen {
   static Future<String> getDescriptions(Map<String, dynamic> json) async {
     String nombre = json['nombre'].toString();
     var url = Uri.parse(
-        'http://40.112.63.111:8081/api/description/${nombre}');
+        'http://192.168.1.2:8081/api/description/${nombre}');
     var response = await http.get(url);
     //print(json['nombre'].toString() + " nombre");
     //print('status: ${response.statusCode}');
