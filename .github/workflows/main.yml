@@ -15,6 +15,7 @@ jobs:
       # Build Website
       - name: Build Website
         run: |
+          flutter channel stable
           flutter config --enable-web
           flutter pub get
           flutter build web --release
@@ -22,7 +23,7 @@ jobs:
 
       # Deploy Firebase Hosting
       - name: Deploy Firebase Hosting
-        uses: w9jds/firebase-action@stable
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:holotourism-fbdbe
         env:
