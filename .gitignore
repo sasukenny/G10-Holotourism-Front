@@ -42,3 +42,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+#github
+.github/workflows
+
+#sonar
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt
+tests.output
+coverage/lcov.info
