@@ -50,12 +50,12 @@ class _InitialHomePage extends State<InitialHomePage> {
                     fontWeight: FontWeight.bold),
               ),
               icon: Icon(
-                Icons.local_restaurant,
+                Icons.location_city,
                 color: Colors.white,
                 size: 30.0,
               ),
               onPressed: () {},
-              label: Text('Gastronomía'),
+              label: Text('Destinos'),
             ),
             Padding(padding: EdgeInsets.all(25.0)),
             ElevatedButton.icon(
@@ -77,7 +77,7 @@ class _InitialHomePage extends State<InitialHomePage> {
                 size: 30.0,
               ),
               onPressed: () {},
-              label: Text('Destinos'),
+              label: Text('Mis rutas'),
             ),
             Padding(padding: EdgeInsets.all(25.0)),
             ElevatedButton.icon(
@@ -105,27 +105,6 @@ class _InitialHomePage extends State<InitialHomePage> {
               label: Text('Galería'),
             ),
             Padding(padding: EdgeInsets.all(25.0)),
-            ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF00897B),
-                onPrimary: Colors.white,
-                shadowColor: Colors.greenAccent,
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0)),
-                minimumSize: Size(400, 100),
-                textStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              icon: Icon(
-                Icons.travel_explore,
-                color: Colors.white,
-                size: 30.0,
-              ),
-              onPressed: () {},
-              label: Text('Experiencias'),
-            ),
           ],
         )
       )

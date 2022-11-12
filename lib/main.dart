@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:holotourismfront/models/lugar_model.dart';
+import 'package:holotourismfront/presentation/pages/initialhome.dart';
 import '../../presentation/pages/welcome.dart';
 // import '../../presentation/ubicacion.dart';
 import '../../presentation/pages/login_page.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Welcome to HoloTourism ',
         theme: ThemeData(primaryColor: Colors.blue),
-        home: welcome(),
+        home: InitialHomePage(token: '123123asdasd',),
+        //home: welcome(),
         routes: {
           RegisterPage.routeName: (_) => RegisterPage(),
           LoginPage.routeName: (_) => LoginPage(),
