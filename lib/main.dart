@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Welcome to HoloTourism ',
         theme: ThemeData(primaryColor: Colors.blue),
-        home: InitialHomePage(token: '123123asdasd',),
+        home: welcome(),
         //home: welcome(),
         routes: {
           RegisterPage.routeName: (_) => RegisterPage(),

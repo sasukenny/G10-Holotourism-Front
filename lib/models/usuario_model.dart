@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../models/lugar_model.dart';
 
 class UsuarioModel extends Equatable{
   final bool ok;
@@ -32,7 +31,7 @@ class UsuarioModel extends Equatable{
   factory UsuarioModel.fromJson(Map<String, dynamic> json) {
     return UsuarioModel(
       ok: json['ok'],
-      nombre: json['nombre'],
+      nombre: json['name'],
       uid: json['uid'],
       token: json['token'],
     );
