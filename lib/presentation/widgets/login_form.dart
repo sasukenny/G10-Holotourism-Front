@@ -163,6 +163,8 @@ class _LoginFormState extends State<LoginForm>{
       {
         if (_formkey.currentState!.validate())
         {
+          print("_email: " + _email);
+          print("_password: " + _password);
           var textodeprueba = await registro.ingresar(_email, _password);
           debugPrint(textodeprueba);
           if (textodeprueba != 'a') {

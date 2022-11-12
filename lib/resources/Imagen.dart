@@ -64,6 +64,7 @@ class Imagen {
         'x-token': xtoken,
       }
     );
+
     Map<String, dynamic> map = json.decode(response.body);
     List<dynamic> data = map["images"];
     resModel = List<ResLugarModel>.from(data.map((i) => ResLugarModel.fromJson(i)));
