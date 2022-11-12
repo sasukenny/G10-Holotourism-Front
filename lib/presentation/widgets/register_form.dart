@@ -174,28 +174,32 @@ class _RegisterFormState extends State<RegisterForm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    "¿Tienes una cuenta?",
-                    style: TextStyle(
-                      fontSize: responsive.dp(1.55),
-                    ),
-                  ),
-                  TextButton(
+                  Flexible(
                     child: Text(
-                      "Ingresa aquí",
-                    ),
-                    style: TextButton.styleFrom(
-                      primary: Color(0xFF00ac83),
-                      textStyle: TextStyle(
+                      "¿Tienes una cuenta?",
+                      style: TextStyle(
                         fontSize: responsive.dp(1.55),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    },
+                  ),
+                  Flexible(
+                    child: TextButton(
+                      child: Text(
+                        "Ingresa aquí",
+                      ),
+                      style: TextButton.styleFrom(
+                        primary: Color(0xFF00ac83),
+                        textStyle: TextStyle(
+                          fontSize: responsive.dp(1.55),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

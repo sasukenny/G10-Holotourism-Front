@@ -49,3 +49,5 @@ app.*.map.json
 #sonar
 .scannerwork/.sonar_lock
 .scannerwork/report-task.txt
+tests.output
+coverage/lcov.info

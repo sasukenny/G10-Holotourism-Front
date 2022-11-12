@@ -24,14 +24,14 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    LugarModel title = new LugarModel(ok: true, nombre: "nombre", latitud: "11", longitud: "11");
+
     return BlocProvider(
       create: (context) => LugarblocBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Welcome to HoloTourism ',
         theme: ThemeData(primaryColor: Colors.blue),
-        home: Location(lugar: title),
+        home: welcome(),
         routes: {
           RegisterPage.routeName: (_) => RegisterPage(),
           LoginPage.routeName: (_) => LoginPage(),

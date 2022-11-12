@@ -7,24 +7,47 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:holotourismfront/presentation/pages/login_page.dart';
+import 'package:holotourismfront/presentation/pages/register_page.dart';
+import 'package:mockito/mockito.dart';
+import 'package:holotourismfront/presentation/pages/welcome.dart';
 
-import 'package:holotourismfront/main.dart';
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  group('Welcome navigation tests', () {
+    late NavigatorObserver mockObserver;
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Crear mock para navegacion
+    setUp(() {
+      mockObserver = MockNavigatorObserver();
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    Future<void> _buildWelcomePage(WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: welcome(),
+        navigatorObservers: [mockObserver],
+        routes: {
+          LoginPage.routeName: (_) => LoginPage(),
+          RegisterPage.routeName: (_) => RegisterPage(),
+        },
+      ));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    }
+
+    testWidgets('Verificar que el boton login exista y redirecciona al ser presionado', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildWelcomePage(tester);
+
+      // Buscar los widgets necesarios
+      final loginButton = find.byKey(const ValueKey("loginButton"));
+
+      await tester.tap(loginButton);
+      await tester.pumpAndSettle(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.byType(LoginPage), findsOneWidget); // Verificar redireccion
+    });
+
   });
 }
