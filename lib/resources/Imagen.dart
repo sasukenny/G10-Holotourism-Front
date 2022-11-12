@@ -15,7 +15,7 @@ import 'dart:io';
 class Imagen {
   Future<String> subir(String field, String filePath) async {
     var request = http.MultipartRequest("POST",
-        Uri.parse('https://holotourism.herokuapp.com/api/images/saveimg/'));
+        Uri.parse('http://40.112.63.111:8081/api/images/saveimg/'));
     request.fields["file"] = field;
     request.files.add(await http.MultipartFile.fromPath("file", filePath));
     request.headers.addAll({"Content-type": "multipart/form-data"});
@@ -33,7 +33,7 @@ class Imagen {
 
   Future<LugarModel> detectar(String fileName) async {
     var response = await http.post(
-      Uri.parse('https://holotourism.herokuapp.com/api/detector/'),
+      Uri.parse('http://40.112.63.111:8081/api/detector/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -57,7 +57,7 @@ class Imagen {
     List<ResLugarModel> resModel;
     List<LugarTuristicoModel> model = <LugarTuristicoModel>[];
     var response = await http.get(
-      Uri.parse('https://holotourism.herokuapp.com/api/images/showimages/'),
+      Uri.parse('http://40.112.63.111:8081/api/images/showimages/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -100,7 +100,7 @@ class Imagen {
 
   Future<String> guardarDB(LugarModel lugar, String xtoken, String nombre) async {
     var response = await http.post(
-      Uri.parse('https://holotourism.herokuapp.com/api/images/savedbimg/'),
+      Uri.parse('http://40.112.63.111:8081/api/images/savedbimg/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -124,7 +124,7 @@ class Imagen {
   static Future<String> getDescriptions(Map<String, dynamic> json) async {
     String nombre = json['nombre'].toString();
     var url = Uri.parse(
-        'https://holotourism.herokuapp.com/api/description/${nombre}');
+        'http://40.112.63.111:8081/api/description/${nombre}');
     var response = await http.get(url);
     //print(json['nombre'].toString() + " nombre");
     //print('status: ${response.statusCode}');
