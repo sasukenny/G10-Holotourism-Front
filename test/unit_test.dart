@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:holotourismfront/models/lugar_model.dart';
+import 'package:holotourismfront/models/res_lugar_model.dart';
+import 'package:holotourismfront/models/usuario_model.dart';
 import 'package:mockito/mockito.dart';
 
 void main() {
@@ -57,4 +59,83 @@ void main() {
   });
 
 
+// ResLugarModel test
+  group('ResLugarModel model tests', () {
+    var lugar = ResLugarModel(id: '', tourname: '', filename: '',
+        description: '', latitude: '', longitude: '', fileUrl: '',
+        user: '', v: '');
+    late Map<String,dynamic> json;
+
+    setUp(() {
+      json = {
+        'id': '1',
+        'tourname': 'tourcito',
+        'filename':  'filename',
+        'description':  'description',
+        'latitude':  'latitude',
+        'longitude':  'longitude',
+        'fileUrl':  'fileUrl',
+        'user':  'user',
+        'v':  'v',
+      };
+    });
+
+    test('lugar debe empezar sin valores', () {
+      expect(lugar.id, '');
+      expect(lugar.tourname, '');
+      expect(lugar.filename, '');
+      expect(lugar.description, '');
+      expect(lugar.latitude, '');
+      expect(lugar.longitude, '');
+      expect(lugar.fileUrl, '');
+      expect(lugar.user, '');
+      expect(lugar.v, '');
+    });
+
+    test('Lugar tiene las propiedades correctas', () {
+      final lugar2 = ResLugarModel.fromJson(json);
+      expect(lugar2.id, '1' );
+      expect(lugar2.tourname, 'tourcito' );
+      expect(lugar2.filename, 'filename' );
+      expect(lugar2.description, 'description' );
+      expect(lugar2.latitude, 'latitude' );
+      expect(lugar2.longitude, 'longitude' );
+      expect(lugar2.fileUrl, 'fileUrl' );
+      expect(lugar2.user, 'user' );
+      expect(lugar2.v, 'v' );
+    });
+
+  });
+
+  //UsuarioModel test
+  group('UsuarioModel model tests', () {
+    var usuario = UsuarioModel(ok: true, uid: '', nombre: '', token: '');
+    late Map<String,dynamic> json;
+
+    setUp(() {
+      json = {
+        'ok': true,
+        'uid': 'uid',
+        'nombre':  'nombre',
+        'token':  'token',
+      };
+    });
+
+    test('usuario debe empezar sin valores', () {
+      expect(usuario.ok, true);
+      expect(usuario.uid, '');
+      expect(usuario.nombre, '');
+      expect(usuario.token, '');
+
+    });
+
+    test('usuario tiene las propiedades correctas', () {
+      final usuario2 = ResLugarModel.fromJson(json);
+      expect(usuario2.ok, true );
+      expect(usuario2.uid, 'uid' );
+      expect(usuario2.nombre, 'nombre' );
+      expect(usuario2.token, 'token' );
+    });
+
+  });
 }
