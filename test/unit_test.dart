@@ -130,7 +130,7 @@ void main() {
     });
 
     test('usuario tiene las propiedades correctas', () {
-      final usuario2 = ResLugarModel.fromJson(json);
+      final usuario2 = UsuarioModel.fromJson(json);
       expect(usuario2.ok, true );
       expect(usuario2.uid, 'uid' );
       expect(usuario2.nombre, 'nombre' );
