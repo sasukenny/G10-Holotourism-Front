@@ -23,7 +23,4 @@ class UrlModel extends Equatable {
     );
   }
 
-  String get _message => message;
-  String get _url => url;
-
 }

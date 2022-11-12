@@ -33,19 +33,4 @@ class LugarModel extends Equatable {
     );
   }
 
-  bool get _ok => ok;
-  String get _nombre => nombre;
-  String get _latitud => latitud;
-  String get _longitud => longitud;
-  String get _descripcion => descripcion;
-
-  //asignar valor a la descripcion
-  set _descripcion(String value) {
-    descripcion = value;
-  }
-
-  set _url(String value){
-    url = value;
-  }
-
 }

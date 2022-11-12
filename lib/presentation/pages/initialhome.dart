@@ -37,6 +37,7 @@ class _InitialHomePage extends State<InitialHomePage> {
         child: Column(
           children: [
             ElevatedButton.icon(
+              key: const Key('Destinos'),
               style: ElevatedButton.styleFrom(
                 primary: Color(0xFF26A69A),
                 onPrimary: Colors.white,
@@ -59,6 +60,7 @@ class _InitialHomePage extends State<InitialHomePage> {
             ),
             Padding(padding: EdgeInsets.all(25.0)),
             ElevatedButton.icon(
+              key: Key('misRutas'),
               style: ElevatedButton.styleFrom(
                 primary: Color(0xFF00897B),
                 onPrimary: Colors.white,
@@ -81,6 +83,7 @@ class _InitialHomePage extends State<InitialHomePage> {
             ),
             Padding(padding: EdgeInsets.all(25.0)),
             ElevatedButton.icon(
+              key: Key('Galería'),
               style: ElevatedButton.styleFrom(
                 primary: Color(0xFF26A69A),
                 onPrimary: Colors.white,

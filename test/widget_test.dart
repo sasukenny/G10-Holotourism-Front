@@ -7,6 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:holotourismfront/presentation/pages/home.dart';
+import 'package:holotourismfront/presentation/pages/initialhome.dart';
 import 'package:holotourismfront/presentation/pages/login_page.dart';
 import 'package:holotourismfront/presentation/pages/register_page.dart';
 import 'package:mockito/mockito.dart';
@@ -62,5 +64,68 @@ void main() {
       // Verificar resultados
       expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
     });
+  });
+
+  group('initialhome navigation tests', () {
+    late NavigatorObserver mockObserver;
+
+    // Crear mock para navegacion
+    setUp(() {
+      mockObserver = MockNavigatorObserver();
+    });
+
+    Future<void> _buildWelcomePage(WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: InitialHomePage(token: '',),
+        navigatorObservers: [mockObserver],
+        routes: {
+          LoginPage.routeName: (_) => LoginPage(),
+          RegisterPage.routeName: (_) => RegisterPage(),
+        },
+      ));
+
+    }
+
+    testWidgets('Verificar que el boton Galeria exista y redirecciona al ser presionado', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildWelcomePage(tester);
+
+      // Buscar los widgets necesarios
+      final galeriaButton = find.byKey(const ValueKey("Galería"));
+
+      await tester.tap(galeriaButton);
+      await tester.pumpAndSettle(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.byType(MyHomePage), findsOneWidget); // Verificar redireccion
+    });
+
+    // testWidgets('Verificar que el boton Destinos exista', (WidgetTester tester) async {
+    //   // Crear mock para navegacion
+    //   await _buildWelcomePage(tester);
+    //
+    //   // Buscar los widgets necesarios
+    //   final registerButton = find.byKey(const ValueKey("registerButton"));
+    //
+    //   await tester.tap(registerButton);
+    //   await tester.pumpAndSettle(); // buffer para limpiar el test
+    //
+    //   // Verificar resultados
+    //   expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
+    // });
+    //
+    // testWidgets('Verificar que el boton Mis rutas exista', (WidgetTester tester) async {
+    //   // Crear mock para navegacion
+    //   await _buildWelcomePage(tester);
+    //
+    //   // Buscar los widgets necesarios
+    //   final registerButton = find.byKey(const ValueKey("registerButton"));
+    //
+    //   await tester.tap(registerButton);
+    //   await tester.pumpAndSettle(); // buffer para limpiar el test
+    //
+    //   // Verificar resultados
+    //   expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
+    // });
   });
 }
