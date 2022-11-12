@@ -44,3 +44,4 @@ app.*.map.json
 /android/app/release
 .scannerwork/.sonar_lock
 .scannerwork/report-task.txt
+tests.output
