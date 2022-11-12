@@ -49,5 +49,18 @@ void main() {
       expect(find.byType(LoginPage), findsOneWidget); // Verificar redireccion
     });
 
+    testWidgets('Verificar que el boton register exista y redirecciona al ser presionado', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildWelcomePage(tester);
+
+      // Buscar los widgets necesarios
+      final registerButton = find.byKey(const ValueKey("registerButton"));
+
+      await tester.tap(registerButton);
+      await tester.pumpAndSettle(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
+    });
   });
 }

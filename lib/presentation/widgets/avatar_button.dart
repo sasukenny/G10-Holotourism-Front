@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AvatarButton extends StatelessWidget{
   final double imageSize;
@@ -23,8 +24,8 @@ class AvatarButton extends StatelessWidget{
             ],
           ),
           child: ClipOval(
-            child: Image.network(
-              "https://thumbs.dreamstime.com/b/user-icon-male-hipster-avatar-vector-flat-design-user-icon-male-beard-icon-hipster-flat-icon-avatar-man-beard-flat-99281046.jpg",
+            child: CachedNetworkImage(
+              imageUrl: 'https://thumbs.dreamstime.com/b/user-icon-male-hipster-avatar-vector-flat-design-user-icon-male-beard-icon-hipster-flat-icon-avatar-man-beard-flat-99281046.jpg',
               width: this.imageSize,
               height: this.imageSize,
             ),
