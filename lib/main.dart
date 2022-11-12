@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:holotourismfront/models/lugar_model.dart';
-import 'package:holotourismfront/presentation/pages/initialhome.dart';
 import '../../presentation/pages/welcome.dart';
-// import '../../presentation/ubicacion.dart';
 import '../../presentation/pages/login_page.dart';
 import '../../presentation/pages/register_page.dart';
 
 import 'blocs/lugarbloc/lugarbloc_bloc.dart';
-import 'presentation/pages/home.dart';
-import 'presentation/pages/ubicacion.dart';
+
 
 
 void main() {
@@ -33,7 +29,6 @@ class MyApp extends StatelessWidget {
         title: 'Welcome to HoloTourism ',
         theme: ThemeData(primaryColor: Colors.blue),
         home: welcome(),
-        //home: welcome(),
         routes: {
           RegisterPage.routeName: (_) => RegisterPage(),
           LoginPage.routeName: (_) => LoginPage(),
