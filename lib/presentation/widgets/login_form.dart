@@ -42,6 +42,7 @@ class _LoginFormState extends State<LoginForm>{
           child: Column (
             children: <Widget>[
               InputText(
+                key: Key("entradaEmail"),
                 keyboardType: TextInputType.emailAddress,
                 label: "Dirección de Email",
                 fondSize: responsive.dp(responsive.isTablet?1.3 : 1.5),
@@ -68,6 +69,7 @@ class _LoginFormState extends State<LoginForm>{
                   children: <Widget>[
                     Expanded(
                       child: InputText(
+                        key: Key("entradaContrasenia"),
                         label: "Contraseña",
                         obscureText: true,
                         borderEnabled: false,
@@ -85,6 +87,7 @@ class _LoginFormState extends State<LoginForm>{
                     ),
 
                     TextButton(
+                      key: Key('olvidoButton'),
                       style: TextButton.styleFrom(
                         primary: Colors.black,
                         padding: EdgeInsets.symmetric(vertical: 10),
@@ -122,6 +125,7 @@ class _LoginFormState extends State<LoginForm>{
                   ),
                   TextButton(
                     child: Text("Regístrate",),
+                    key:  Key('registrateButton'),
                     style: TextButton.styleFrom(
                       primary: Color(0xFF00ac83),
                     textStyle: TextStyle(fontSize: responsive.dp(1.55),),
@@ -142,6 +146,7 @@ class _LoginFormState extends State<LoginForm>{
 
   Widget BotonIngresar(responsive){
     return TextButton(
+      key: Key('ingresarButton'),
       child: Text(
         'Ingresar',
         style: TextStyle(

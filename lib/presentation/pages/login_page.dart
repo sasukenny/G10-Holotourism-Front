@@ -22,6 +22,7 @@ class _LoginPageState extends State <LoginPage>{
 
     return Scaffold(
       body: GestureDetector(
+        key: Key("focusText"),
         onTap: (){
           FocusScope.of(context).unfocus();
         },

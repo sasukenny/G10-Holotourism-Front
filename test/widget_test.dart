@@ -63,4 +63,151 @@ void main() {
       expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
     });
   });
+
+// test group 2
+// login form
+  group('login form tests', () {
+    late NavigatorObserver mockObserver;
+
+    // Crear mock para navegacion
+    setUp(() {
+      mockObserver = MockNavigatorObserver();
+    });
+
+    Future<void> _buildLoginPage(WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: LoginPage(),
+        navigatorObservers: [mockObserver],
+        routes: {
+          LoginPage.routeName: (_) => LoginPage(),
+          RegisterPage.routeName: (_) => RegisterPage(),
+        },
+      ));
+
+    }
+
+    testWidgets('validar boton de texto registrate redirecciona al ser presionado', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      // Buscar los widgets necesarios
+      final registrateButton = find.byKey(const ValueKey("registrateButton"));
+
+      await tester.tap(registrateButton);
+      await tester.pumpAndSettle(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.byType(RegisterPage), findsOneWidget); // Verificar redireccion
+    });
+
+    testWidgets('validar boton de olvido Contraseña existe', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      // Buscar los widgets necesarios
+      final olvidoButton = find.byKey(const ValueKey("olvidoButton"));
+
+      await tester.tap(olvidoButton);
+      await tester.pumpAndSettle(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.byType(LoginPage), findsOneWidget); // Verificar redireccion
+    });
+
+    testWidgets('validar formulario de login deja escribir', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      // Buscar los widgets necesarios
+      final entradaEmail = find.byKey(const ValueKey("entradaEmail"));
+      final entradaContrasenia = find.byKey(const ValueKey("entradaContrasenia"));
+
+
+      // Ejecutar test
+      await tester.enterText(entradaEmail, "calan");
+      await tester.enterText(entradaContrasenia, "zopas");
+      await tester.pump(); // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.text("calan"), findsOneWidget);
+      expect(find.text("zopas"), findsOneWidget);
+    // Verificar redireccion
+    });
+
+    testWidgets('validar boton de Ingresar existe y valida', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      final ingresarButton = find.byKey(const ValueKey("ingresarButton"));
+
+
+      // Ejecutar test
+      await tester.tap(ingresarButton);
+      await tester.pump(Duration(seconds:2));
+      await tester.pumpAndSettle();// buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.text("Email incorrecto"), findsOneWidget);
+      expect(find.text("Contraseña inválida"), findsOneWidget);
+      // Verificar redireccion
+    });
+
+    testWidgets('validar e-mail', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      // Buscar los widgets necesarios
+      final entradaEmail = find.byKey(const ValueKey("entradaEmail"));
+      final ingresarButton = find.byKey(const ValueKey("ingresarButton"));
+
+      // Ejecutar test
+      await tester.enterText(entradaEmail, "calan");
+      await tester.tap(ingresarButton);
+      await tester.pump(Duration(seconds:2));
+      await tester.pumpAndSettle();// // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.text("Email incorrecto"), findsOneWidget);
+      // Verificar redireccion
+    });
+
+    testWidgets('validar contraseña', (WidgetTester tester) async {
+      // Crear mock para navegacion
+      await _buildLoginPage(tester);
+
+      // Buscar los widgets necesarios
+      final entradaContrasenia = find.byKey(const ValueKey("entradaContrasenia"));
+      final ingresarButton = find.byKey(const ValueKey("ingresarButton"));
+
+      // Ejecutar test
+      await tester.enterText(entradaContrasenia, "     ");
+      await tester.tap(ingresarButton);
+      await tester.pump(Duration(seconds:2));
+      await tester.pumpAndSettle();// // buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.text("Email incorrecto"), findsOneWidget);
+      // Verificar redireccion
+    });
+
+    testWidgets('validar que el usuario ingresado esté registrado', (WidgetTester tester) async {
+      /// Crear mock para navegacion
+      await _buildLoginPage(tester);
+      final entradaEmail = find.byKey(const ValueKey("entradaEmail"));
+      final entradaContrasenia = find.byKey(const ValueKey("entradaContrasenia"));
+      final ingresarButton = find.byKey(const ValueKey("ingresarButton"));
+
+
+      // Ejecutar test
+      await tester.enterText(entradaEmail, "calan@gmail.com");
+      await tester.enterText(entradaContrasenia, "siuuuuu");
+      await tester.tap(ingresarButton);
+      await tester.pump(Duration(seconds:2));
+      await tester.pumpAndSettle();// buffer para limpiar el test
+
+      // Verificar resultados
+      expect(find.text("Usuario o contraseña incorrecto"), findsOneWidget);
+
+    });
+  });
 }
