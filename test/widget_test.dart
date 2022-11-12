@@ -5,8 +5,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:holotourismfront/blocs/lugarbloc/lugarbloc_bloc.dart';
 import 'package:holotourismfront/presentation/pages/home.dart';
 import 'package:holotourismfront/presentation/pages/initialhome.dart';
 import 'package:holotourismfront/presentation/pages/login_page.dart';
@@ -214,28 +217,25 @@ void main() {
   });
 
   group('initialhome navigation tests', () {
-    late NavigatorObserver mockObserver;
-
-    // Crear mock para navegacion
-    setUp(() {
-      mockObserver = MockNavigatorObserver();
-    });
-
-    Future<void> _buildWelcomePage(WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: InitialHomePage(token: '',),
-        navigatorObservers: [mockObserver],
-        routes: {
-          LoginPage.routeName: (_) => LoginPage(),
-          RegisterPage.routeName: (_) => RegisterPage(),
-        },
-      ));
-
-    }
 
     testWidgets('Verificar que el boton Galeria exista y redirecciona al ser presionado', (WidgetTester tester) async {
       // Crear mock para navegacion
-      await _buildWelcomePage(tester);
+      await tester.pumpWidget(
+          BlocProvider(
+            create: (context) => LugarblocBloc(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Welcome to HoloTourism ',
+              theme: ThemeData(primaryColor: Colors.blue),
+              home: InitialHomePage(token: '123123asdasd',),
+              //home: welcome(),
+              routes: {
+                RegisterPage.routeName: (_) => RegisterPage(),
+                LoginPage.routeName: (_) => LoginPage(),
+              },
+            ),
+          ),
+      );
 
       // Buscar los widgets necesarios
       final galeriaButton = find.byKey(const ValueKey("Galería"));
@@ -246,7 +246,7 @@ void main() {
       // Verificar resultados
       expect(find.byType(MyHomePage), findsOneWidget); // Verificar redireccion
     });
-
+    //
     // testWidgets('Verificar que el boton Destinos exista', (WidgetTester tester) async {
     //   // Crear mock para navegacion
     //   await _buildWelcomePage(tester);

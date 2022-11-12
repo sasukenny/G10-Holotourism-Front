@@ -61,14 +61,12 @@ void main() {
 
 // ResLugarModel test
   group('ResLugarModel model tests', () {
-    var lugar = ResLugarModel(id: '', tourname: '', filename: '',
-        description: '', latitude: '', longitude: '', fileUrl: '',
-        user: '', v: '');
+    late ResLugarModel lugar;
     late Map<String,dynamic> json;
 
     setUp(() {
       json = {
-        'id': '1',
+        '_id': '1',
         'tourname': 'tourcito',
         'filename':  'filename',
         'description':  'description',
@@ -76,8 +74,11 @@ void main() {
         'longitude':  'longitude',
         'fileUrl':  'fileUrl',
         'user':  'user',
-        'v':  'v',
+        '__v':  'v',
       };
+      lugar = const ResLugarModel(id: '', tourname: '', filename: '',
+          description: '', latitude: '', longitude: '', fileUrl: '',
+          user: '', v: '');
     });
 
     test('lugar debe empezar sin valores', () {
@@ -109,7 +110,7 @@ void main() {
 
   //UsuarioModel test
   group('UsuarioModel model tests', () {
-    var usuario = UsuarioModel(ok: true, uid: '', nombre: '', token: '');
+    late UsuarioModel usuario;
     late Map<String,dynamic> json;
 
     setUp(() {
@@ -119,6 +120,7 @@ void main() {
         'nombre':  'nombre',
         'token':  'token',
       };
+      usuario = const UsuarioModel(ok: true, uid: '', nombre: '', token: '');
     });
 
     test('usuario debe empezar sin valores', () {
