@@ -40,7 +40,6 @@ class Primera extends StatelessWidget {
           ],
           color: Color(0xFFEEEDDE),
         ),
-
         //margin: EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 50),
         child: Center(
           child: Column(

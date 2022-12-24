@@ -17,7 +17,7 @@ String redireccionUrl = file.readAsStringSync();
 class Imagen {
   Future<String> subir(String field, String filePath) async {
     var request = http.MultipartRequest("POST",
-        Uri.parse('$redireccionUrl/api/images/saveimg/'));
+        Uri.https('holotourism.ga','/api/images/saveimg/'));
     request.fields["file"] = field;
     request.files.add(await http.MultipartFile.fromPath("file", filePath));
     request.headers.addAll({"Content-type": "multipart/form-data"});
@@ -35,7 +35,7 @@ class Imagen {
 
   Future<LugarModel> detectar(String fileName) async {
     var response = await http.post(
-      Uri.parse('$redireccionUrl/api/detector/'),
+      Uri.https('holotourism.ga','/api/detector/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -60,7 +60,7 @@ class Imagen {
     List<ResLugarModel> resModel;
     List<LugarTuristicoModel> model = <LugarTuristicoModel>[];
     var response = await http.get(
-      Uri.parse('$redireccionUrl/api/images/showimages/'),
+      Uri.https('holotourism.ga','/api/images/showimages/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -80,7 +80,7 @@ class Imagen {
           longitud: element.glongitude,
       );
       lugar.descripcion = element.description;
-      final http.Response responseData = await http.get(Uri.parse(element.fileUrl));
+      final http.Response responseData = await http.get(Uri.https(element.fileUrl));
       Uint8List uint8list = responseData.bodyBytes;
       var buffer = uint8list.buffer;
       ByteData byteData = ByteData.view(buffer);
@@ -103,7 +103,7 @@ class Imagen {
 
   Future<String> guardarDB(LugarModel lugar, String xtoken, String nombre) async {
     var response = await http.post(
-      Uri.parse('$redireccionUrl/api/images/savedbimg/'),
+      Uri.https('holotourism.ga','/api/images/savedbimg/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'x-token': xtoken,
@@ -126,8 +126,8 @@ class Imagen {
 
   static Future<String> getDescriptions(Map<String, dynamic> json) async {
     String nombre = json['nombre'].toString();
-    var url = Uri.parse(
-        '$redireccionUrl/api/description/${nombre}');
+    var url = Uri.https(
+        'holotourism.ga','/api/description/${nombre}');
     var response = await http.get(url);
     //print(json['nombre'].toString() + " nombre");
     //print('status: ${response.statusCode}');

@@ -20,10 +20,11 @@ class Registro {
 
   Future<String> registrar(String nombres, String apellidos, String numero_celular, String correo, String password) async {
     var response = await http.post(
-      Uri.parse('$redireccionUrl/api/auth/new'),
+      Uri.https('holotourism.ga','/api/auth/new'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
+
       body: jsonEncode(<String, String>{
         'name': nombres,
         'apellido': apellidos,
@@ -38,11 +39,10 @@ class Registro {
       return 'a';
     }
   }
-
   Future<String> ingresar(String email, String password) async {
-
+    print("holla");
     var response = await http.post(
-      Uri.parse('$redireccionUrl/api/auth/'),
+      Uri.https('holotourism.ga','/api/auth/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

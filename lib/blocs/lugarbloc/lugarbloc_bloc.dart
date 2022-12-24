@@ -67,12 +67,14 @@ class LugarblocBloc extends Bloc<LugarblocEvent, LugarblocState> {
     late LugarModel futureLugar;
     var picture = event.fileImage;
     final state = this.state;
+    debugPrint("picture.path.split().last,: " + picture.path.split("/").last,);
     final url = await imagen.subir(picture.path.split("/").last, picture.path);
     debugPrint("url: " + url);
     if(url != ''){
       futureLugar = await imagen.detectar(picture.path.split("/").last);
       futureLugar.url = url;
       debugPrint('funciono mi king');
+      debugPrint(state.toString());
       if(state is LugarblocLoaded){
         debugPrint('Emitiendo evento con array cargado');
         print(state.token);

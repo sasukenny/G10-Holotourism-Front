@@ -5,12 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../presentation/pages/welcome.dart';
 import '../../presentation/pages/login_page.dart';
 import '../../presentation/pages/register_page.dart';
+//import 'package:flutter_config/flutter_config.dart';
 
 import 'blocs/lugarbloc/lugarbloc_bloc.dart';
 
 
 
-void main() {
+Future<void> main() async {
+  //WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  //await FlutterConfig.loadEnvVariables();
   runApp(MyApp());
 }
 
