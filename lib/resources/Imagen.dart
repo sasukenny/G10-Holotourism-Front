@@ -10,6 +10,8 @@ import 'package:path_provider/path_provider.dart';
 
 import 'dart:io';
 
+var file = File("url_redireccion.txt");
+String redireccionUrl = file.readAsStringSync();
 
 
 class Imagen {
